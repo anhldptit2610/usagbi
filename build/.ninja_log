@@ -1,0 +1,20 @@
+# ninja log v6
+31	1743	7876029266788369	core/CMakeFiles/gb_core.dir/cpu.cpp.obj	2b81aa6f2ee6064
+23	2467	7875156746835166	CMakeFiles/usagbi.dir/emulator.cpp.obj	c7634d339cac1ec9
+12	462	7845850998317362	CMakeFiles/usagbi.dir/bus.cpp.obj	92486b333af55f54
+34	1956	7845850998495873	CMakeFiles/usagbi.dir/rom.cpp.obj	829d79f5b47e41d4
+16	1999	7875155177592533	CMakeFiles/usagbi.dir/usagbi.cpp.obj	2c775719bb5cd17a
+33	2015	7875155177757298	CMakeFiles/usagbi.dir/logger.cpp.obj	bc3d679d73bb017
+22	2660	7875155177638510	CMakeFiles/usagbi.dir/cpu.cpp.obj	c0c95dd63323b406
+2468	3183	7875156771286206	usagbi.exe	84b8af3272db26b2
+25	464	7876029266734879	core/CMakeFiles/gb_core.dir/bus.cpp.obj	3c17e91f463fcaba
+21	3249	7876868799758112	build.ninja	92d14bec3b900e4a
+2737	2821	7876029293853501	core/gb_core.lib	487f9b46b267d42a
+36	1951	7876029266842020	core/CMakeFiles/gb_core.dir/rom.cpp.obj	f842c5826148e101
+888	1922	7876862835597331	tests/cpu_instructions/cpu_instr_test.exe	c64b57806a548c21
+33	1673	7876028686266804	usagbi/CMakeFiles/usagbi.dir/usagbi.cpp.obj	4dd9255367d53e48
+29	1697	7876028686216805	utils/CMakeFiles/gb_utils.dir/logger.cpp.obj	c6874edfb341b72
+48	144	7876029266967787	utils/gb_utils.lib	e6dde63faf168f9
+42	2736	7876029266904614	core/CMakeFiles/gb_core.dir/emulator.cpp.obj	561e257e3df0ee10
+2821	4099	7876029294696811	usagbi/usagbi.exe	859e99637694380a
+40	888	7876862827090731	tests/cpu_instructions/CMakeFiles/cpu_instr_test.dir/cpu_instructions_tests.cpp.obj	ddc16faa1d73ffe0

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "configurePresets": [
+    {
+      "name": "default",
+      "inherits": "vcpkg",
+      "environment": {
+        "VCPKG_ROOT": "D:\\VS\\2022\\Community\\VC\\vcpkg"
+      }
+    }
+  ]
+}
