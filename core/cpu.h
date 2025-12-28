@@ -1,9 +1,9 @@
 #pragma once
 
 #include "common.h"
-#include "rom.h"
 #include "bus.h"
 #include <fstream>
+#include <vector>
 
 typedef struct Instruction {
 	u8 opcode;
@@ -36,7 +36,8 @@ typedef struct CpuState {
 			};
 		};
 	} AF;
-	std::array<u8, 4> romData;		// store 4 next ROM bytes, start from the address PC.
+	std::array<u8, 4> romData;				// this is to perform https://github.com/wheremyfoodat/Gameboy-logs log comparing
+	std::vector<std::pair<u16, u8>> mem;	// this is to perform https://github.com/SingleStepTests/sm83/tree/main json test
 	Instruction currInstr;
 } CpuState;
 
@@ -167,7 +168,7 @@ private:
 	*/
 	u16& DecodeR16MemBlock0(u8);
 	u8& DecodeR8Block1(u8);
-	void FetchInstruction(Rom&);
+	void FetchInstruction();
 
 	void NOP();
 
@@ -179,18 +180,28 @@ private:
 	void LD_IHL_U8();
 	void LD_R8_R8();
 	void LD_R8_IHL();
+	void LD_IR16_SP();
+	void LD_IHL_R8();
+	void LDH_IA8_A();
+	void LDH_IC_A();
+	void LDH_A_IA8();
+	void LDH_A_IC();
+	void LD_IA16_A();
+	void LD_A_IA16();
+	void LD_HL_SP_i8();
+	void LD_SP_HL();
 	/* increment/decrement instructions */
 	void INC_R16();
 	void INC_R8();
 	void INC_IHL();
 	void DEC_R8();
 	void DEC_IHL();
-
 	/* bit shift instructions */
 
 	/* jumps and subroutine instructions */
 	bool CheckSubroutineCond(u8);
 	void JR_COND();
+	void JP_HL();
 	void RET_COND();
 	/* 8-bit arithmetic instructions */
 	void ADD_A_R8();
@@ -201,6 +212,27 @@ private:
 	void OR_A_R8();
 	void XOR_A_R8();
 	void CP_A_R8();
+	void CPL();
+	void ADD_A_IHL();
+	void SUB_A_IHL();
+	void AND_A_IHL();
+	void OR_A_IHL();
+	void ADC_A_IHL();
+	void SBC_A_IHL();
+	void XOR_A_IHL();
+	void CP_A_IHL();
+	void ADD_A_U8();
+	void SUB_A_U8();
+	void AND_A_U8();
+	void OR_A_U8();
+	void ADC_A_U8();
+	void SBC_A_U8();
+	void XOR_A_U8();
+	void CP_A_U8();
+	/* 16-bit arithmetic instructions */
+	void ADD_HL_R16();
+	void DEC_R16();
+	void ADD_SP_E8();
 
 	/* rotate instructions */
 	void RLCA();
@@ -208,19 +240,48 @@ private:
 	void RRCA();
 	void RRA();
 
+	/* miscellanious instructions */
+	void STOP();
+	void DAA();
+	void SCF();
+	void CCF();
+	void HALT();
+	void EI();
+	void DI();
+
 	/* stack manipulation instructions */
 	void PushWord(u16);
 	u16 PopWord();
 	void PUSH_R16();
 	void POP_R16();
 	void RST();
+	void RET();
+	void RETI();
+	void JP();
+	void CALL();
 
+	/* CB instructions */
+	void RLC();
+	void RRC();
+	void RL();
+	void RR();
+	void SLA();
+	void SRA();
+	void SWAP();
+	void SRL();
+	void BIT();
+	void RESET();
+	void SETF();
+	int RunCBInstruction(u8);
 protected:
 public:
-	CpuState GetCpuState() const;
+	CpuState GetCpuStateForDebug(const CpuState& state);
+	CpuState GetCpuRegState() const;
+	bool CompareCpuState(const CpuState&);
+	void SetCpuState(const CpuState&);
 	void SetFlag(CpuFlag flag, bool val);
 	bool GetFlag(CpuFlag flag);
-	int Step(Rom&);
+	int Step();
 	Cpu(Bus *);
 	~Cpu();
 };

@@ -1,4 +1,4 @@
-add_executable(usagbi usagbi.cpp)
+add_executable(usagbi "usagbi.cpp")
 
 set_property(TARGET usagbi PROPERTY
     VS_DEBUGGER_COMMAND_ARGUMENTS "C:/Users/Admin/Documents/emulator/roms/GameBoy/Tetris.gb"

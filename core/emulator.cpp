@@ -51,7 +51,7 @@ void Emulator::Run()
 #ifdef LOGGER_ENABLE
 		logger.LogCpuState(cpu.GetCpuState());
 #endif
-		if (cpu.Step(rom) == -1)
+		if (cpu.Step() == -1)
 			break;
 	}
 }

@@ -7,9 +7,11 @@ class Bus {
 private:
 	Rom* rom;
 	u8 memory[0x10000];
+	bool cpuInstrTest = false;
 public:
 	void Write(const u16, const u8);
 	u8 Read(const u16);
 	Bus(Rom *);
+	Bus();
 	~Bus();
 };

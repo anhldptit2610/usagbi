@@ -324,11 +324,12 @@ build tests\rebuild_cache: phony tests\CMakeFiles\rebuild_cache.util
 #############################################
 # Order-only phony target for cpu_instr_test
 
-build cmake_object_order_depends_target_cpu_instr_test: phony || .
+build cmake_object_order_depends_target_cpu_instr_test: phony || cmake_object_order_depends_target_gb_core
 
 build tests\cpu_instructions\CMakeFiles\cpu_instr_test.dir\cpu_instructions_tests.cpp.obj: CXX_COMPILER__cpu_instr_test_unscanned_Debug C$:\Users\Admin\source\repos\usagbi\tests\cpu_instructions\cpu_instructions_tests.cpp || cmake_object_order_depends_target_cpu_instr_test
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -external:IC:\Users\Admin\source\repos\usagbi\build\vcpkg_installed\x64-windows\include -external:W0
+  DEFINES = -DFMT_SHARED -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20 /wd4251 /wd4275 /utf-8
+  INCLUDES = -IC:\Users\Admin\source\repos\usagbi\core -IC:\Users\Admin\source\repos\usagbi\utils -external:IC:\Users\Admin\source\repos\usagbi\build\vcpkg_installed\x64-windows\include -external:W0
   OBJECT_DIR = tests\cpu_instructions\CMakeFiles\cpu_instr_test.dir
   OBJECT_FILE_DIR = tests\cpu_instructions\CMakeFiles\cpu_instr_test.dir
   TARGET_COMPILE_PDB = tests\cpu_instructions\CMakeFiles\cpu_instr_test.dir\
@@ -342,10 +343,10 @@ build tests\cpu_instructions\CMakeFiles\cpu_instr_test.dir\cpu_instructions_test
 #############################################
 # Link the executable tests\cpu_instructions\cpu_instr_test.exe
 
-build tests\cpu_instructions\cpu_instr_test.exe: CXX_EXECUTABLE_LINKER__cpu_instr_test_Debug tests\cpu_instructions\CMakeFiles\cpu_instr_test.dir\cpu_instructions_tests.cpp.obj
+build tests\cpu_instructions\cpu_instr_test.exe: CXX_EXECUTABLE_LINKER__cpu_instr_test_Debug tests\cpu_instructions\CMakeFiles\cpu_instr_test.dir\cpu_instructions_tests.cpp.obj | core\gb_core.lib utils\gb_utils.lib core\gb_core.lib utils\gb_utils.lib vcpkg_installed\x64-windows\debug\lib\spdlogd.lib vcpkg_installed\x64-windows\debug\lib\fmtd.lib || core\gb_core.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  LINK_LIBRARIES = core\gb_core.lib  utils\gb_utils.lib  core\gb_core.lib  utils\gb_utils.lib  vcpkg_installed\x64-windows\debug\lib\spdlogd.lib  vcpkg_installed\x64-windows\debug\lib\fmtd.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = tests\cpu_instructions\CMakeFiles\cpu_instr_test.dir
   POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Admin\source\repos\usagbi\build\tests\cpu_instructions && C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file D:/VS/2022/Community/VC/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary C:/Users/Admin/source/repos/usagbi/build/tests/cpu_instructions/cpu_instr_test.exe -installedDir C:/Users/Admin/source/repos/usagbi/build/vcpkg_installed/x64-windows/debug/bin -OutVariable out"
   PRE_LINK = cd .

@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"C:/Users/Admin/source/repos/usagbi/build/vcpkg_installed/vcpkg/blds/nlohmann-json/x64-windows-dbg/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
