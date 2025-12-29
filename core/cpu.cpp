@@ -13,11 +13,11 @@ std::array<u8, 256> mainOpcodeMCycles = {
     // 0x0_
     1, 3, 2, 2, 1, 1, 2, 1, 5, 2, 2, 2, 1, 1, 2, 1,
     // 0x1_
-    1, 3, 2, 2, 1, 1, 2, 1, 3, 2, 2, 2, 1, 1, 2, 1,
-    // 0x2_
     3, 3, 2, 2, 1, 1, 2, 1, 3, 2, 2, 2, 1, 1, 2, 1,
+    // 0x2_
+    2, 3, 2, 2, 1, 1, 2, 1, 2, 2, 2, 2, 1, 1, 2, 1,
     // 0x3_
-    3, 3, 2, 2, 3, 3, 3, 1, 3, 2, 2, 2, 1, 1, 2, 1,
+    2, 3, 2, 2, 3, 3, 3, 1, 2, 2, 2, 2, 1, 1, 2, 1,
     // 0x4_
     1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1,
     // 0x5_
@@ -25,7 +25,7 @@ std::array<u8, 256> mainOpcodeMCycles = {
     // 0x6_
     1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1,
     // 0x7_
-    2, 2, 2, 2, 2, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1,
+    2, 2, 2, 2, 2, 2, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1,
     // 0x8_
     1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1,
     // 0x9_
@@ -35,13 +35,33 @@ std::array<u8, 256> mainOpcodeMCycles = {
     // 0xB_
     1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1,
     // 0xC_
-    5, 3, 4, 4, 6, 4, 2, 4, 5, 4, 4, 1, 6, 6, 2, 4,
+    2, 3, 3, 4, 3, 4, 2, 4, 2, 4, 3, 1, 3, 6, 2, 4,
     // 0xD_
-    5, 3, 4, 1, 6, 4, 2, 4, 5, 4, 4, 1, 6, 1, 2, 4,
+    2, 3, 3, 1, 3, 4, 2, 4, 2, 4, 3, 1, 3, 1, 2, 4,
     // 0xE_
     3, 3, 2, 1, 1, 4, 2, 4, 4, 1, 4, 1, 1, 1, 2, 4,
     // 0xF_
     3, 3, 2, 1, 1, 4, 2, 4, 3, 2, 4, 1, 1, 1, 2, 4
+};
+
+std::array<u8, 256> cbOpcodeMCycles = {
+//  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // 0x 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // 1x 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // 2x 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // 3x 
+    2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 3, 2, // 4x 
+    2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 3, 2, // 5x 
+    2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 3, 2, // 6x 
+    2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 3, 2, // 7x 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // 8x 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // 9x 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // Ax 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // Bx 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // Cx 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // Dx 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // Ex 
+    2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 4, 2, // Fx 
 };
 
 static enum COND {
@@ -726,14 +746,16 @@ void Cpu::RET()
 	if (state.currInstr.opcode == 0xC9 || CheckSubroutineCond(state.currInstr.opcode)) {
 		u16 pc = PopWord();
 		regs.PC() = pc;
-		mCycles += 3;
+		if (state.currInstr.opcode != 0xC9 && state.currInstr.opcode != 0xD9)
+			mCycles += 3;
 	}
 }
 
 void Cpu::JP()
 {
 	if (state.currInstr.opcode == 0xC3 || CheckSubroutineCond(state.currInstr.opcode)) {
-		mCycles += 1;
+		if (state.currInstr.opcode != 0xC3)
+			mCycles += 1;
 		regs.PC() = U16(state.currInstr.opr1, state.currInstr.opr2);
 	}
 }
@@ -742,7 +764,8 @@ void Cpu::CALL()
 {
 	regs.PC() += 2;
 	if (state.currInstr.opcode == 0xCD || CheckSubroutineCond(state.currInstr.opcode)) {
-		mCycles += 3;
+		if (state.currInstr.opcode != 0xCD)
+			mCycles += 3;
 		PushWord(regs.PC());
 		regs.PC() = U16(state.currInstr.opr1, state.currInstr.opr2);
 	}
@@ -920,7 +943,7 @@ void Cpu::SETF()
 	}
 }
 
-int Cpu::RunCBInstruction(u8 opcode)
+void Cpu::RunCBInstruction(u8 opcode)
 {
 	switch (opcode) {
 	case 0x00:
@@ -1203,9 +1226,8 @@ int Cpu::RunCBInstruction(u8 opcode)
 		break;
 	default:
 		spdlog::error("Opcode invalid - ${:02X}", state.currInstr.opcode);
-		return OPCODE_UNKNOWN;
+		break;
 	}
-	return 2;
 }
 
 void Cpu::RETI()
@@ -1346,7 +1368,8 @@ int Cpu::Step()
 	case 0xCB:
 		mCycles = 2;
 		regs.PC() += 1;
-		return RunCBInstruction(state.currInstr.opr1);
+		RunCBInstruction(state.currInstr.opr1);
+		return cbOpcodeMCycles[state.currInstr.opr1];
 	case 0xC6:
 		ADD_A_U8();
 		break;
@@ -1700,6 +1723,7 @@ int Cpu::Step()
 		spdlog::error("Opcode invalid - ${:02X}", state.currInstr.opcode);
 		return OPCODE_UNKNOWN;
 	};
+	mCycles += mainOpcodeMCycles[state.currInstr.opcode];
 	return mCycles;
 }
 

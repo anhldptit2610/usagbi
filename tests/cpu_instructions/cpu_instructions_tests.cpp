@@ -11,7 +11,7 @@
 
 using json = nlohmann::json;
 
-void ParseTestCase(CpuState& beforeState, CpuState& afterState, const json& tests)
+void ParseTestCase(CpuState& beforeState, CpuState& afterState, const json& tests, int& mCycle)
 {
 	beforeState.PC = tests["initial"]["pc"];
 	beforeState.SP = tests["initial"]["sp"];
@@ -35,6 +35,7 @@ void ParseTestCase(CpuState& beforeState, CpuState& afterState, const json& test
 		std::pair<u16, u8> entry = {i[0], i[1]};
 		afterState.mem.push_back(entry);
 	}
+	mCycle = tests["cycles"].size();
 }
 
 void PrintState(const CpuState& state)
@@ -60,10 +61,15 @@ int main(int argc, char *argv[])
 	
 	for (const auto& i : testCases) {
 		CpuState beforeState, afterState;
-		ParseTestCase(beforeState, afterState, i);
+		int testCycle, actualCycle;
+		ParseTestCase(beforeState, afterState, i, testCycle);
 		cpu.SetCpuState(beforeState);
-		if (cpu.Step() == -1) {
-			spdlog::error("Test {} failed. Opcode has not implemented yet.");
+		actualCycle = cpu.Step();
+		if (actualCycle == -1) {
+			spdlog::error("Test {} failed. Opcode has not implemented yet.", argv[1]);
+			return EXIT_FAILURE;
+		} else if (testCycle != actualCycle) {
+			spdlog::error("Test {} failed. Wrong cycles. Expect {}, got {}.", argv[1], testCycle, actualCycle);
 			return EXIT_FAILURE;
 		}
 		if (!cpu.CompareCpuState(afterState)) {

@@ -272,7 +272,7 @@ private:
 	void BIT();
 	void RESET();
 	void SETF();
-	int RunCBInstruction(u8);
+	void RunCBInstruction(u8);
 protected:
 public:
 	CpuState GetCpuStateForDebug(const CpuState& state);
